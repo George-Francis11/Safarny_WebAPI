@@ -108,8 +108,62 @@ module.exports.tripsSeeds = [
         currency: 'AUD',
         food_cuisine: 'Australian',
         season: 'Summer',
+        images: [
+            
+        ],
         geometry: {
             type: 'Point',
             coordinates: [-33.8688, 151.2093]
         }
-    }];
+    },
+    {
+        name: 'Trip to Barcelona',
+        location: 'Barcelona, Spain',
+        description: 'A trip to Barcelona',
+        airfare: 500,
+        hotel: 100,
+        car_rental: 50,
+        food: 100,
+        activities: 100,
+        base_expenses: 500,
+        total_per_day: 350,
+        currency: 'EUR',
+        food_cuisine: 'Spanish',
+        season: 'Summer',
+        images: [
+            {
+                url: 'https://res.cloudinary.com/dbyetkwab/image/upload/v1682880859/Safarny/Barcelona_sjkvc2.jpg',
+                filename: 'Safarny/Barcelona_sjkvc2'
+            }
+        ],
+        geometry: {
+            type: 'Point',
+            coordinates: [41.3851, 2.1734]
+        }
+    },
+    {    
+        name: "Trip to Alexandria",
+        location: "Alexandria, Egypt",
+        description: "A trip to Alexandria",
+        airfare: 200,
+        hotel: 50,
+        car_rental: 10,
+        food: 50,
+        activities: 50,
+        base_expenses: 200,
+        total_per_day: 160,
+        currency: "EGP",
+        food_cuisine: "Egyptian",
+        season: "Winter",
+        images: [
+            {
+            "url": "https://res.cloudinary.com/dbyetkwab/image/upload/v1682881690/Safarny/Alex_scvwcl.jpg",
+            "filename" : "ALex_scvwc1"
+            }
+        ],
+        geometry: {
+            type: "Point",
+            coordinates: [31.2001, 29.9187]
+        }
+    },
+];

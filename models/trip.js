@@ -7,6 +7,14 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+const ImageSchema = new Schema({
+    url: String,
+    filename: String
+});
+ImageSchema.virtual('thumbnail').get(function () {
+    return this.url.replace('/upload', '/upload/w_200');
+});
+
 // Define our trip schema
 const options = { toJSON: { virtuals: true }, timestamps: true };
 var TripSchema = new Schema({
@@ -22,6 +30,7 @@ var TripSchema = new Schema({
     total_per_day: Number,
     currency: String,
     food_cuisine: String,
+    images: [ImageSchema],
     season: {
         type: String,
         enum: ['Summer', 'Winter'],
