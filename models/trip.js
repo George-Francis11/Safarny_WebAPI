@@ -22,6 +22,11 @@ var TripSchema = new Schema({
     total_per_day: Number,
     currency: String,
     food_cuisine: String,
+    season: {
+        type: String,
+        enum: ['Summer', 'Winter'],
+        required: true
+    },
     geometry: {
         type: {
             type: String, 

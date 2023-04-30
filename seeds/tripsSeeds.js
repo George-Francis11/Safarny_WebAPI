@@ -12,6 +12,7 @@ module.exports.tripsSeeds = [
         total_per_day: 350,
         currency: 'EUR',
         food_cuisine: 'French',
+        season: 'Winter',
         geometry: {
             type: 'Point',
             coordinates: [48.8566, 2.3522]
@@ -30,6 +31,7 @@ module.exports.tripsSeeds = [
         total_per_day: 350,
         currency: 'GBP',
         food_cuisine: 'English',
+        season: 'Winter',
         geometry: {
             type: 'Point',
             coordinates: [51.5074, 0.1278]
@@ -48,6 +50,7 @@ module.exports.tripsSeeds = [
         total_per_day: 350,
         currency: 'EUR',
         food_cuisine: 'Italian',
+        season: 'Summer',
         geometry: {
             type: 'Point',
             coordinates: [41.9028, 12.4964]
@@ -66,6 +69,7 @@ module.exports.tripsSeeds = [
         total_per_day: 350,
         currency: 'JPY',
         food_cuisine: 'Japanese',
+        season: 'Summer',
         geometry: {
             type: 'Point',
             coordinates: [35.6762, 139.6503]
@@ -84,6 +88,7 @@ module.exports.tripsSeeds = [
         total_per_day: 350,
         currency: 'USD',
         food_cuisine: 'American',
+        season: 'Summer',
         geometry: {
             type: 'Point',
             coordinates: [40.7128, 74.0060]
@@ -102,6 +107,7 @@ module.exports.tripsSeeds = [
         total_per_day: 350,
         currency: 'AUD',
         food_cuisine: 'Australian',
+        season: 'Summer',
         geometry: {
             type: 'Point',
             coordinates: [-33.8688, 151.2093]
