@@ -28,6 +28,14 @@ module.exports.index = catchAsync(async (req, res) => {
             return (trip.base_expenses + (trip.total_per_day * duration)) <= budget;
         });
     }
+    // check if season is provided
+    if (req.query.season) {
+        // capitalize first letter of season
+        const season = req.query.season.charAt(0).toUpperCase() + req.query.season.slice(1);
+        trips = trips.filter((trip) => {
+            return trip.season === season;
+        });
+    }
     res.status(200).json({ trips });
 });
 
