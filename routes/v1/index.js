@@ -1,5 +1,6 @@
 const express = require('express');
 const tripRouter = require('./trip.route');
+const adminRouter = require('./admin.route');
 
 const router = express.Router();
 
@@ -8,6 +9,10 @@ const defaultRoutes = [
         path: '/trips',
         route: tripRouter,
     },
+    {
+        path: '/admin',
+        route: adminRouter,
+    }
 ];
 
 router.get('/', (req, res) => {

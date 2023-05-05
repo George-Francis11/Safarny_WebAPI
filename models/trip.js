@@ -18,19 +18,60 @@ ImageSchema.virtual('thumbnail').get(function () {
 // Define our trip schema
 const options = { toJSON: { virtuals: true }, timestamps: true };
 var TripSchema = new Schema({
-    name: String,
-    location: String,
-    description: String,
-    airfare: Number,
-    hotel: Number,
-    car_rental: Number,
-    food: Number,
-    activities: Number,
-    base_expenses: Number,
-    total_per_day: Number,
-    currency: String,
-    food_cuisine: String,
-    images: [ImageSchema],
+    name: {
+        type: String,
+        required: true
+    },
+    location: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    airfare: {
+        type: Number,
+        required: true
+    },
+    hotel:{
+        type: Number,
+        required: true
+    },
+    car_rental: {
+        type: Number,
+        required: true
+    },
+    food: {
+        type: Number,
+        required: true
+    },
+    activities:{
+        type: Number,
+        required: true
+    },
+    base_expenses:{
+        type: Number,
+        required: true
+    },
+    total_per_day:{
+        type: Number,
+        required: true
+    },
+    currency:{
+        type: String,
+        required: true
+    },
+    food_cuisine:{
+        type: String,
+        enum: [ 'American', 'Chinese', 'French', 'Indian', 'Italian', 'Japanese', 'Mexican', 'Thai', 'Vietnamese', 'Egyptian', 'Other' ],
+        required: true
+    },
+    images:
+    {
+        type: [ImageSchema],
+        required: true
+    },
     season: {
         type: String,
         enum: ['Summer', 'Winter'],
@@ -40,11 +81,11 @@ var TripSchema = new Schema({
         type: {
             type: String, 
             enum: ['Point'], // 'location.type' must be 'Point'
-            // required: true
+            required: true
         },
         coordinates: {
             type: [Number],
-            // required: true
+            required: true
         }
     }
 }, options);
