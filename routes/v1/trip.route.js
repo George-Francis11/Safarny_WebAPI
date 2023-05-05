@@ -30,19 +30,86 @@ module.exports = router;
  *      type: object
  *      required:
  *       - name
+ *       - location
  *       - description
- *       - price
+ *       - airfare
+ *       - hotel
+ *       - car_rental
+ *       - food
+ *       - activities
+ *       - base_expenses
+ *       - total_per_day
+ *       - currency
+ *       - food_cuisine
+ *       - season
+ *       - geometry
+ *       - images
  *      properties:
  *       name:
  *        type: string
+ *       location:
+ *        type: string
  *       description:
  *        type: string
- *       price:
+ *       airfare:
  *        type: number
+ *       hotel:
+ *        type: number
+ *       car_rental:
+ *        type: number
+ *       food:
+ *        type: number
+ *       activities:
+ *        type: number
+ *       base_expenses:
+ *        type: number
+ *       total_per_day:
+ *        type: number
+ *       currency:
+ *        type: string
+ *       food_cuisine:
+ *        type: string
+ *       season:
+ *        type: string
+ *       geometry:
+ *        type: object
+ *        properties:
+ *         type:
+ *          type: string
+ *         coordinates:
+ *          type: string
+ *        example:
+ *         type: Point
+ *         coordinates: [30.0444, 31.2357]
+ *       images:
+ *        type: array
+ *        items:
+ *         type: object
+ *         properties:
+ *          url:
+ *           type: string
+ *          filename:
+ *           type: string
  *      example:
- *       name: Trip to Cairo
- *       description: Trip to Cairo
- *       price: 100
+ *       name: Trip to Alexandria
+ *       location: Alexandria, Egypt
+ *       description: Trip to Alexandria
+ *       airfare: 200
+ *       hotel: 50
+ *       car_rental: 10
+ *       food: 50
+ *       activities: 50
+ *       base_expenses: 200
+ *       total_per_day: 160
+ *       currency: EGP
+ *       food_cuisine: Egyptian
+ *       season: Winter
+ *       geometry:
+ *        type: Point
+ *        coordinates: [30.0444, 31.2357]
+ *       images:
+ *        - url: https://res.cloudinary.com/dxkufsejm/image/upload/v1620829856/YelpCamp/ahxqjzqjxqjxqjxqjxqj.jpg
+ *          filename: YelpCamp/ahxqjzqjxqjxqjxqjxqj
  */
 
 

@@ -36,6 +36,8 @@ module.exports.index = catchAsync(async (req, res) => {
             return trip.season === season;
         });
     }
+
+    // check if country is provided
     res.status(200).json({ trips });
 });
 
@@ -79,13 +81,3 @@ module.exports.deleteTrip = catchAsync(async (req, res) => {
     }
 });
     
-
-// module.exports.getSuitableTrips = catchAsync(async (req, res) => {
-//     const { startDate, endDate, budget } = req.query;
-//     const duration = (new Date(endDate) - new Date(startDate)) / (1000 * 60 * 60 * 24);
-//     const trips = await Trip.find({});
-//     const suitableTrips = trips.filter((trip) => {
-//         return (trip.base_expenses + (trip.total_per_day*duration)) <= budget;
-//     });
-//     res.status(200).json({ suitableTrips });
-// });
