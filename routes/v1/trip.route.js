@@ -136,25 +136,7 @@ module.exports = router;
  *               type: array
  *               items:
  *                 $ref: "#/components/schemas/Trip"
- *   post:
- *     summary: Create a new trip
- *     tags: [Trips]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: "#/components/schemas/Trip"
- *     responses:
- *       200:
- *         description: The created trip
- *         content:
- *           application/json:
- *             schema:
- *               $ref: "#/components/schemas/Trip"
- * 
- *       500:
- *         description: Some server error
+ *   
  * /trips/{id}:
  *   get:
  *     summary: Get the trip by id

@@ -21,12 +21,12 @@ module.exports = router;
 /** 
  * @swagger
  * tags:
- *   name: Trips
- *   description: The trips managing API
- * /trips:
+ *   name: Admin
+ *   description: The Admin panel API
+ * admin/trips:
  *   get:
  *     summary: Returns the list of all the trips
- *     tags: [Trips]
+ *     tags: [Admin]
  *     parameters:
  *       - in: query
  *         name: season
@@ -49,7 +49,7 @@ module.exports = router;
  *                 $ref: "#/components/schemas/Trip"
  *   post:
  *     summary: Create a new trip
- *     tags: [Trips]
+ *     tags: [Admin]
  *     requestBody:
  *       required: true
  *       content:
@@ -66,10 +66,10 @@ module.exports = router;
  * 
  *       500:
  *         description: Some server error
- * /trips/{id}:
+ * admin/trips/{id}:
  *   get:
  *     summary: Get the trip by id
- *     tags: [Trips]
+ *     tags: [Admin]
  *     parameters:
  *       - in: path
  *         name: id
