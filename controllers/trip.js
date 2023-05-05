@@ -38,6 +38,13 @@ module.exports.index = catchAsync(async (req, res) => {
     }
 
     // check if country is provided
+    if (req.query.country) {
+        const country = req.query.country.charAt(0).toUpperCase() + req.query.country.slice(1);
+        trips = trips.filter((trip) => {
+            return trip.country === country;
+        });
+    }
+    
     res.status(200).json({ trips });
 });
 
