@@ -49,6 +49,11 @@ var TripSchema = new Schema({
     }
 }, options);
 
+TripSchema.virtual('country').get(function () {
+    // remove the leading white space
+    return this.location.split(',')[1].trim();
+});
+
 // Export the Mongoose model
 module.exports = mongoose.model('Trip', TripSchema);
 

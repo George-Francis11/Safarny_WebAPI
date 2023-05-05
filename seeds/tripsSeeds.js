@@ -166,4 +166,55 @@ module.exports.tripsSeeds = [
             coordinates: [31.2001, 29.9187]
         }
     },
+    {
+        name: "Trip to Aswan",
+        location: "Aswan, Egypt",
+        description: "A trip to Aswan",
+        airfare: 200,
+        hotel: 50,
+        car_rental: 10,
+        food: 50,
+        activities: 50,
+        base_expenses: 200,
+        total_per_day: 160,
+        currency: "EGP",
+        food_cuisine: "Egyptian",
+        season: "Winter",
+        images: [
+            {
+            "url": "https://res.cloudinary.com/dbyetkwab/image/upload/v1682881690/Safarny/Alex_scvwcl.jpg",
+            "filename" : "ALex_scvwc1"
+            }
+        ],  
+        geometry: {
+            type: "Point",
+            coordinates: [24.0889, 32.8998]
+        }
+    },
+    {
+        name: "Trip to Luxor",
+        location: "Luxor, Egypt",
+        description: "A trip to Luxor",
+        airfare: 200,
+        hotel: 50,
+        car_rental: 10,
+        food: 50,
+        activities: 50,
+        base_expenses: 200,
+        total_per_day: 160,
+        currency: "EGP",
+        food_cuisine: "Egyptian",
+        season: "Winter",
+        images: [
+            {
+                "url": "https://res.cloudinary.com/dbyetkwab/image/upload/v1682881690/Safarny/Alex_scvwcl.jpg",
+                "filename": "ALex_scvwc1"
+            }
+        ],
+        geometry: {
+            type: "Point",
+            coordinates: [25.6872, 32.6396]
+        }
+    },
+
 ];

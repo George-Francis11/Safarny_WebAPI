@@ -10,6 +10,8 @@ const bodyParser = require('body-parser');
 const ExpressError = require('./utilities/ExpressError');
 const { errorConverter, errorHandler } = require('./middlewares/error');
 const httpStatus = require('http-status');
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsDoc = require('swagger-jsdoc');
 
 mongoose.connect('mongodb://127.0.0.1:27017/web-api-cw', { useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => { 
@@ -32,13 +34,37 @@ app.get('/', (req, res) => {
     res.status(200).send('Welcome to the Trip API Home Page');
 });
 
+const options = {
+    definition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'Safarny API',
+            version: '1.0.0',
+            description: 'Safarny API',
+        },
+        servers: [
+            {
+                url: 'http://localhost:8080/v1',
+            },
+        ],
+    },
+    apis: ['./routes/v1/*.js'],
+};
+
+const specs = swaggerJsDoc(options);
+app.use('/swagger.json', (_req, res) => res.json(specs));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(null, {swaggerOptions: {url: '/swagger.json'}}));
+
+
+
+
+
+
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page not found', httpStatus.NOT_FOUND));
 })
-
 app.use(errorConverter);
-
 app.use(errorHandler);
 
 
