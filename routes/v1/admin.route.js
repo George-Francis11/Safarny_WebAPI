@@ -5,21 +5,27 @@ const multer = require('multer');
 const { storage } = require('../../services/cloudinary');
 const swaggerJSDoc = require('swagger-jsdoc');
 const { isLogged, isAdmin, isSuperAdmin } = require('../../middlewares/userManagment');
-const { getAdmins, createAdmin } = require('../../controllers/admin');
+const { getAdmins, createAdmin, showAdmin, deleteAdmin, updateAdmin } = require('../../controllers/admin');
+const {validateTrip, validateAdmin} = require('../../middlewares/validations');
 const upload = multer({ storage });
 
 router.route('/trips')
     .get(isLogged, isAdmin,index)
-    .post(upload.array("image"), create)
+    .post(validateTrip,upload.array("image"), create)
 
 router.route('/trips/:id')
     .get(show)
     .put(put)
     .delete(deleteTrip)
 
-router.route('/admin')
+router.route('/admins')
     .get(isLogged, isAdmin, getAdmins)
-    .post(isLogged, isSuperAdmin, createAdmin)
+    .post(isLogged, isSuperAdmin,validateAdmin, createAdmin)
+
+router.route('/admins/:id')
+    .get(isLogged, isSuperAdmin, showAdmin)
+    .delete(isLogged, isSuperAdmin, deleteAdmin)
+    .put(isLogged, isSuperAdmin, updateAdmin)
 
 module.exports = router;
 
