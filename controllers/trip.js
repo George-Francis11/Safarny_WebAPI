@@ -28,6 +28,12 @@ module.exports.index = catchAsync(async (req, res) => {
             return (trip.base_expenses + (trip.total_per_day * duration)) <= budget;
         });
     }
+    if (req.query.budget) {
+        const budget = req.query.budget;
+        trips = trips.filter((trip) => {
+            return trip.base_expenses <= budget;
+        });
+    }
     // check if season is provided
     if (req.query.season) {
         // capitalize first letter of season

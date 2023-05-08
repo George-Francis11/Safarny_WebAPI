@@ -12,6 +12,7 @@ const { errorConverter, errorHandler } = require('./middlewares/error');
 const httpStatus = require('http-status');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
+const cors = require('cors');
 
 mongoose.connect('mongodb://127.0.0.1:27017/web-api-cw', { useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => { 
@@ -27,6 +28,7 @@ mongoose.set('strictQuery', false);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors());
 
 app.use('/v1', v1Router);
 
