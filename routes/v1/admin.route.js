@@ -31,6 +31,35 @@ module.exports = router;
 
 /** 
  * @swagger
+ * components:
+ *  schemas:
+ *     Admin:
+ *      type: object
+ *      required:
+ *       - name
+ *       - email
+ *       - password
+ *       - role
+ *      properties:
+ *       name:
+ *        type: string
+ *       email:
+ *        type: string
+ *       password:
+ *        type: string
+ *       role:
+ *        type: string
+ *        enum:
+ *         - admin
+ *         - superAdmin
+ *      example:
+ *       name: admin
+ *       email: admin@gmail.com
+ *       password: admin123
+ *       role: admin
+ */
+/**
+ * @swagger
  * tags:
  *   name: Admin
  *   description: The Admin panel API
@@ -58,6 +87,8 @@ module.exports = router;
  *               type: array
  *               items:
  *                 $ref: "#/components/schemas/Trip"
+ *       401:
+ *         description: Unauthorized
  *   post:
  *     summary: Create a new trip
  *     tags: [Admin]
@@ -74,7 +105,8 @@ module.exports = router;
  *           application/json:
  *             schema:
  *               $ref: "#/components/schemas/Trip"
- * 
+ *       401:
+ *         description: Unauthorized
  *       500:
  *         description: Some server error
  * admin/trips/{id}:
@@ -95,6 +127,172 @@ module.exports = router;
  *           application/json:
  *             schema:
  *               $ref: "#/components/schemas/Trip"
+ *       401:
+ *         description: Unauthorized
  *       404:
  *         description: The trip was not found
+ *   put:
+ *     summary: Edit the trip by id
+ *     tags: [Admin]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The trip id
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/Trip"
+ *     responses:
+ *       200:
+ *         description: Trip updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/Trip"
+ *       401:
+ *         description: Unauthorized
+ *       404:
+ *         description: The trip was not found
+ *       500:
+ *         description: Some server error
+ *   delete:
+ *     summary: Remove the trip by id
+ *     tags: [Admin]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The trip id
+ *     description: The trip id
+ *     responses:
+ *       200:
+ *         description: The trip was deleted successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/Trip"
+ *       401:
+ *         description: Unauthorized
+ *       404:
+ *         description: The trip was not found
+ *       500:
+ *         description: Some server error
+ * 
+ * admin/admins:
+ *   get:
+ *     summary: Returns the list of all admins
+ *     tags: [Admin]
+ *     responses:
+ *       200:
+ *         description: The list of the admins
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: "#/components/schemas/Admin"
+ *       401:
+ *         description: Unauthorized
+ *   post:
+ *     summary: Create a new admin
+ *     tags: [Admin]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema: 
+ *             $ref: "#/components/schemas/Admin"
+ *     responses:
+ *       200:
+ *         description: The created admin
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/Admin"
+ *       401:
+ *         description: Unauthorized
+ *       500:
+ *         description: Some server error
+ * admin/admins/{id}:
+ *   get:
+ *     summary: Get the admin by id
+ *     tags: [Admin]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The admin id
+ *     responses:
+ *       200:
+ *         description: The admin by id
+ *         contens:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/Admin"
+ *       401:
+ *         description: Unauthorized
+ *       404:
+ *         description: The admin was not found
+ *   put:
+ *     summary: Edit the admin by id
+ *     tags: [Admin]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The admin id
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/Admin"
+ *     responses:
+ *       200:
+ *         description: Admin updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/Admin"
+ *       401:
+ *         description: Unauthorized
+ *       404:
+ *         description: The admin was not found
+ *       500:
+ *         description: Some server error
+ *   delete:
+ *     summary: Remove the admin by id
+ *     tags: [Admin]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The admin id
+ *     description: The admin id
+ *     responses:
+ *       200:
+ *         description: The admin was deleted successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/Admin"
+ *       401:
+ *         description: Unauthorized
+ *       404:
+ *         description: The admin was not found
+ *       500:
+ *         description: Some server error
 */ 
