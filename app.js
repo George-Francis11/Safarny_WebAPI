@@ -36,6 +36,12 @@ app.get('/', (req, res) => {
     res.status(200).send('Welcome to the Trip API Home Page');
 });
 
+app.use('/test', (req, res) => {
+    // log the method and the body
+    console.log(req.method, req.body);
+    res.status(200).send('Welcome to the Trip API test Page');
+});
+
 const options = {
     definition: {
         openapi: '3.0.0',

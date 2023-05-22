@@ -13,6 +13,10 @@ module.exports.tripsSeeds = [
         currency: 'EUR',
         food_cuisine: 'French',
         season: 'Winter',
+        images: [{
+                url: 'https://res.cloudinary.com/dbyetkwab/image/upload/v1682880859/Safarny/Barcelona_sjkvc2.jpg',
+                filename: 'Safarny/Barcelona_sjkvc2'
+            }],
         geometry: {
             type: 'Point',
             coordinates: [48.8566, 2.3522]
@@ -30,8 +34,12 @@ module.exports.tripsSeeds = [
         base_expenses: 500,
         total_per_day: 350,
         currency: 'GBP',
-        food_cuisine: 'English',
+        food_cuisine: 'Other',
         season: 'Winter',
+        images: [{
+                url: 'https://res.cloudinary.com/dbyetkwab/image/upload/v1682880859/Safarny/Barcelona_sjkvc2.jpg',
+                filename: 'Safarny/Barcelona_sjkvc2'
+            }],
         geometry: {
             type: 'Point',
             coordinates: [51.5074, 0.1278]
@@ -51,6 +59,10 @@ module.exports.tripsSeeds = [
         currency: 'EUR',
         food_cuisine: 'Italian',
         season: 'Summer',
+        images: [{
+                url: 'https://res.cloudinary.com/dbyetkwab/image/upload/v1682880859/Safarny/Barcelona_sjkvc2.jpg',
+                filename: 'Safarny/Barcelona_sjkvc2'
+            }],
         geometry: {
             type: 'Point',
             coordinates: [41.9028, 12.4964]
@@ -70,6 +82,10 @@ module.exports.tripsSeeds = [
         currency: 'JPY',
         food_cuisine: 'Japanese',
         season: 'Summer',
+        images: [{
+                url: 'https://res.cloudinary.com/dbyetkwab/image/upload/v1682880859/Safarny/Barcelona_sjkvc2.jpg',
+                filename: 'Safarny/Barcelona_sjkvc2'
+            }],
         geometry: {
             type: 'Point',
             coordinates: [35.6762, 139.6503]
@@ -89,6 +105,10 @@ module.exports.tripsSeeds = [
         currency: 'USD',
         food_cuisine: 'American',
         season: 'Summer',
+        images: [{
+                url: 'https://res.cloudinary.com/dbyetkwab/image/upload/v1682880859/Safarny/Barcelona_sjkvc2.jpg',
+                filename: 'Safarny/Barcelona_sjkvc2'
+            }],
         geometry: {
             type: 'Point',
             coordinates: [40.7128, 74.0060]
@@ -106,11 +126,12 @@ module.exports.tripsSeeds = [
         base_expenses: 500,
         total_per_day: 350,
         currency: 'AUD',
-        food_cuisine: 'Australian',
+        food_cuisine: 'Other',
         season: 'Summer',
-        images: [
-            
-        ],
+        images: [{
+                url: 'https://res.cloudinary.com/dbyetkwab/image/upload/v1682880859/Safarny/Barcelona_sjkvc2.jpg',
+                filename: 'Safarny/Barcelona_sjkvc2'
+            }],
         geometry: {
             type: 'Point',
             coordinates: [-33.8688, 151.2093]
@@ -128,7 +149,7 @@ module.exports.tripsSeeds = [
         base_expenses: 500,
         total_per_day: 350,
         currency: 'EUR',
-        food_cuisine: 'Spanish',
+        food_cuisine: 'Other',
         season: 'Summer',
         images: [
             {

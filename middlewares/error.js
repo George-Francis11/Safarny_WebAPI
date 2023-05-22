@@ -27,8 +27,11 @@ const errorHandler = (err, req, res, next) => {
     message,
     ...({ stack: err.stack }),
   };
+  if (process.env.NODE_ENV === 'production') {
+    delete response.stack;
+  }
   console.log(response);
-  res.status(statusCode).send(response);
+  res.status(statusCode).json(response);
 };
 
 module.exports = {
