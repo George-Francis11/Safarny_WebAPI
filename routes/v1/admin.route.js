@@ -5,27 +5,32 @@ const multer = require('multer');
 const { storage } = require('../../services/cloudinary');
 const swaggerJSDoc = require('swagger-jsdoc');
 const { isLogged, isAdmin, isSuperAdmin } = require('../../middlewares/userManagment');
-const { getAdmins, createAdmin, showAdmin, deleteAdmin, updateAdmin } = require('../../controllers/admin');
+const { getAdmins, createAdmin, showAdmin, deleteAdmin, updateAdmin, login } = require('../../controllers/admin');
 const {validateTrip, validateAdmin} = require('../../middlewares/validations');
 const upload = multer({ storage });
 
 router.route('/trips')
-    .get(isLogged, isAdmin,index)
-    .post(validateTrip,upload.array("image"), create)
+    .get(isLogged,isAdmin,index)
+    .post(isLogged, isAdmin, upload.array("image"), validateTrip, create)
 
 router.route('/trips/:id')
-    .get(show)
-    .put(put)
-    .delete(deleteTrip)
+    .get(isLogged,isAdmin, show)
+    .put(isLogged,isAdmin, put)
+    .delete(isLogged,isAdmin, deleteTrip)
 
 router.route('/admins')
-    .get(isLogged, isAdmin, getAdmins)
+    .get(isLogged,isAdmin, getAdmins)
     .post(isLogged, isSuperAdmin,validateAdmin, createAdmin)
 
 router.route('/admins/:id')
-    .get(isLogged, isSuperAdmin, showAdmin)
+    .get(isLogged,isAdmin, showAdmin)
     .delete(isLogged, isSuperAdmin, deleteAdmin)
     .put(isLogged, isSuperAdmin, updateAdmin)
+
+
+router.route('/login')
+    .post(isLogged, login)
+
 
 module.exports = router;
 

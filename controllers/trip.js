@@ -7,6 +7,7 @@ const { getCurrency } = require('../services/currency');
 module.exports.show = catchAsync(async (req, res) => {
     const tripId = req.params.id;
     const trip = await Trip.findById(tripId);
+    console.log(trip.geometry);
     const weatherData = await getWeather(
         trip.geometry.coordinates[1],
         trip.geometry.coordinates[0],
@@ -55,7 +56,9 @@ module.exports.index = catchAsync(async (req, res) => {
 });
 
 module.exports.create = catchAsync(async (req, res) => {
-    const trip = new Trip(req.body);
+    let { trip } = req.body;
+    console.log("trip:", trip);
+    trip = new Trip(trip);
     await trip.save();
     res.status(201).json({ trip });
 });
@@ -67,7 +70,7 @@ module.exports.put = catchAsync(async (req, res) => {
         return res.status(404).json({ error: 'Trip not found' });
     }
     else {
-        const newTrip = await Trip.findByIdAndUpdate(tripId);
+        const newTrip = await Trip.findByIdAndUpdate(tripId, req.body, { new: true, runValidators: true });
         if (!newTrip) {
             return res.status(404).json({ error: 'Trip not found' });
         }

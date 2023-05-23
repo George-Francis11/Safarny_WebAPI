@@ -21,8 +21,7 @@ const adminSchema = new Schema({
         type: String,
         required: true,
         trim: true,
-        minlength: 3,
-        maxlength: 30,
+        minlength: 3
     },
     role: {
         type: String,

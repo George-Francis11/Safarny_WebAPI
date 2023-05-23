@@ -3,15 +3,16 @@ const express = require('express');
 const router = express.Router({mergeParams: true});
 const { show, index } = require('../../controllers/trip');
 const swaggerJSDoc = require('swagger-jsdoc');
+const { isLogged } = require('../../middlewares/userManagment');
 
 
 
 
 router.route('/')
-    .get(index)
+    .get(isLogged,index)
 
 router.route('/:id')
-    .get(show)
+    .get(isLogged,show)
 
 module.exports = router;
 

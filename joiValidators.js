@@ -40,7 +40,7 @@ module.exports.tripSchema = Joi.object({
         season: Joi.string().required().valid("Summer","Winter").escapeHTML(),
         geometry: Joi.object({
             type: Joi.string().required().valid("Point").escapeHTML(),
-            coordinates: Joi.string().required().escapeHTML()
+            coordinates: Joi.array().required()
         }).required(),
         images: Joi.array().items(Joi.object({
             url: Joi.string().required().escapeHTML(),
@@ -55,7 +55,7 @@ module.exports.adminSchema = Joi.object({
         name: Joi.string().required().escapeHTML(),
         email: Joi.string().required().escapeHTML(),
         password: Joi.string().required().escapeHTML(),
-        role: Joi.string().required().escapeHTML()
+        role: Joi.string().escapeHTML()
 
     }).required()
 });
