@@ -1,0 +1,501 @@
+{
+	"info": {
+		"_postman_id": "7124aa43-1208-4421-adbb-82c4a7fa2d3e",
+		"name": "Safarny-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21243500"
+	},
+	"item": [
+		{
+			"name": "AdminPanel",
+			"item": [
+				{
+					"name": "admingetall",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Oauth",
+								"value": "{{Oauth_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/v1/admin/trips",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"admin",
+								"trips"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "adminAddTrip",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Oauth",
+								"value": "{{Oauth_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Trip to Barcelona\",\r\n\"location\":\"Barcelona, Spain\",\r\n\"description\":\"A trip to Barcelona\",\r\n\"airfare\":500,\r\n\"hotel\":100,\r\n\"car_rental\":50,\r\n\"food\":100,\r\n\"activities\":100,\r\n\"base_expenses\":500,\r\n\"total_per_day\":350,\r\n\"currency\":\"EUR\",\r\n\"food_cuisine\":\"Other\",\r\n\"images\": [\r\n    \"url\":\"https://res.cloudinary.com/dbyetkwab/image/upload/v1682880859/Safarny/…\",\r\n\"filename\":\"Safarny/Barcelona_sjkvc2\"],\r\n\"season\":\"Summer\",\r\n\"geometry\":{\"type\":\"Point\",\r\n\"coordinates\":[\"0\":41.3851,\"1\":2.1734]\r\n}\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/admin/trips",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"admin",
+								"trips"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Trips",
+			"item": [
+				{
+					"name": "getAll-noFilters",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Oauth",
+								"value": "{{Oauth_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/trips",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"trips"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTrip-succ",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Oauth",
+								"value": "{{Oauth_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/trips/{{trip_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"trips",
+								"{{trip_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTrip-fail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Oauth",
+								"value": "{{Oauth_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/trips/60ae312e40ba030015c5a9c7",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"trips",
+								"60ae312e40ba030015c5a9c7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll-FilterbyCountry",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Oauth",
+								"value": "{{Oauth_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/trips?country=Egypt",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"trips"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "Egypt"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll-FilterbySeason",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Oauth",
+								"value": "{{Oauth_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/trips?season=Summer",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"trips"
+							],
+							"query": [
+								{
+									"key": "season",
+									"value": "Summer"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll-FilterbyDate&Budget",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Oauth",
+								"value": "{{Oauth_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/trips?startDate=2023-05-01&endDate=2023-05-15&budget=5000",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"trips"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2023-05-01"
+								},
+								{
+									"key": "endDate",
+									"value": "2023-05-15"
+								},
+								{
+									"key": "budget",
+									"value": "5000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll-FilterbyBudget",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Oauth",
+								"value": "{{Oauth_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/trips?budget=5000",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"trips"
+							],
+							"query": [
+								{
+									"key": "budget",
+									"value": "5000"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OAuth",
+			"item": [
+				{
+					"name": "validate oauth-succ",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "oauth",
+								"value": "{{Oauth_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/trips?season=Summer",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"trips"
+							],
+							"query": [
+								{
+									"key": "season",
+									"value": "Summer"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validate oauth-failure",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "oauth",
+								"value": "{{Oauth_token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/v1/trips/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"trips",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "generate oauth-succ",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"clientId\" : \"2\",\r\n    \"clientSecret\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/authenticate/generate",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"authenticate",
+								"generate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "generate oauth-failure",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"clientId\" : \"2\",\r\n    \"clientSecret\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/authenticate/generate",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"authenticate",
+								"generate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh oauth-succ",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"clientId\" : \"2\",\r\n    \"clientSecret\": \"1234\",\r\n    \"refreshToken\":\"191n5io9ln\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/authenticate/refresh",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"authenticate",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh oauth-failure",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"clientId\" : \"2\",\r\n    \"clientSecret\": \"1234\",\r\n    \"refreshToken\":\"r7vd8zjrkf\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Oauth_token}}/v1/authenticate/refresh",
+							"host": [
+								"{{Oauth_token}}"
+							],
+							"path": [
+								"v1",
+								"authenticate",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:8080/v1"
+		},
+		{
+			"key": "Oauth_token",
+			"value": "token1",
+			"type": "string"
+		},
+		{
+			"key": "trip_id",
+			"value": "646d1b3a8c12d020d4538736"
+		},
+		{
+			"key": "jwt",
+			"value": "456465asdas564312"
+		}
+	]
+}
