@@ -1,10 +1,16 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
 const mongoose = require('mongoose');
 const Trips = require('../models/trip');
 const Admin = require('../models/admin');
+const Client = require('../OAuth/oauth.clients');
 const { tripsSeeds } = require('./tripsSeeds');
 const { adminSeeds } = require('./adminSeeds');
+const { clientSeeds } = require('./clientSeeds');
 
-mongoose.connect('mongodb://127.0.0.1:27017/web-api-cw', { useNewUrlParser: true, useUnifiedTopology: true})
+const url = process.env.MONGO_CONNECTION_STRING
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => { 
         console.log('Hello from the DB');
     })
@@ -23,6 +29,9 @@ const SeedDb = async () => {
     await Admin.deleteMany({});
     await Admin.insertMany(adminSeeds);
     console.log('Admin DB seeded');
+    await Client.deleteMany({});
+    await Client.insertMany(clientSeeds);
+    console.log('Client DB seeded');
 }
 
 SeedDb().then(() => {

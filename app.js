@@ -13,8 +13,9 @@ const httpStatus = require('http-status');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
 const cors = require('cors');
+const url = process.env.MONGO_CONNECTION_STRING || 'mongodb://127.0.0.1:27017/web-api-cw';
 
-mongoose.connect('mongodb://127.0.0.1:27017/web-api-cw', { useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => { 
         console.log('Hello from the DB');
     })
@@ -36,7 +37,7 @@ app.get('/', (req, res) => {
     res.status(200).send('Welcome to the Trip API Home Page');
 });
 
-app.use('/test', (req, res) => {
+app.use('/ping', (req, res) => {
     // log the method and the body
     console.log(req.method, req.body);
     res.status(200).send('Welcome to the Trip API test Page');
